@@ -38,14 +38,6 @@ header{background:linear-gradient(135deg,var(--verde),var(--verde-medio));color:
   .nav-main a span{font-size:.8rem}
   /* El header se oculta al bajar para no estorbar la navegación */
   header.header-hidden{transform:translateY(-100%)}
-  /* Hero móvil: texto sobre la imagen con capa oscura uniforme para contraste */
-  .hero{background:linear-gradient(rgba(6,24,18,.78),rgba(6,24,18,.78)),url('/img/hero-playa.jpg') center/cover no-repeat;
-    min-height:clamp(340px,80vw,470px);justify-content:center;text-align:center;padding:2.5rem 1.2rem}
-  .hero h1{font-size:1.75rem;text-shadow:0 2px 8px rgba(0,0,0,.6)}
-  .hero h1 svg{width:30px;height:30px}
-  .hero p{font-size:1rem;text-shadow:0 1px 6px rgba(0,0,0,.7);opacity:.97}
-  .info-bar{margin-top:1.1rem}
-  .hero-img{display:none}
 }
 @media(max-width:420px){
   .nav-main a{flex:1 1 28%;font-size:.72rem;padding:.45rem .3rem}
@@ -158,3 +150,14 @@ footer strong{color:#fff}
 
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{animation:fadeIn .3s ease}
+
+/* ===== Hero móvil — va AL FINAL para ganar la cascada sobre la regla base ===== */
+@media(max-width:760px){
+  .hero{background:linear-gradient(rgba(6,24,18,.78),rgba(6,24,18,.78)),url('/img/hero-playa.jpg') center/cover no-repeat;
+    min-height:clamp(340px,80vw,470px);justify-content:center;text-align:center;padding:2.5rem 1.2rem}
+  .hero h1{font-size:1.75rem;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+  .hero h1 svg{width:30px;height:30px}
+  .hero p{font-size:1rem;text-shadow:0 1px 6px rgba(0,0,0,.7);opacity:.97}
+  .info-bar{margin-top:1.1rem}
+  .hero-img{display:none}
+}
