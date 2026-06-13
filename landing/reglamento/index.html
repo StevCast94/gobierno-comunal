@@ -22,13 +22,14 @@
       <a href="/modulos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Módulos</span></a>
       <a href="/reglamento" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Reglamento</span></a>
       <a href="/mapas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg><span>Mapas</span></a>
+      <a href="/galeria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Galería</span></a>
       <a href="/transparencia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Transparencia</span></a>
     </nav>
   </div>
 </header>
 
 <div class="page-content">
-  <h1>
+  <h1 class="titulo-deco">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
     Reglamento Interno
   </h1>
@@ -78,10 +79,10 @@ const reglamento = [
   { num: "7", titulo: "Requisitos para aspirante", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "a) 5 años de residencia continua; b) Mayor de 18 años; c) Solicitud escrita; d) Sin antecedentes penales graves; e) Compromiso escrito; f) Aprobación de la Asamblea; g) Cuota de ingreso.", detalle: "La residencia se comprueba con declaración de dos comuneros plenos y verificación del cabildo. La cuota de ingreso es independiente de la cuota anual.", tags: ["aspirante", "requisitos", "5 años", "asamblea"] },
   { num: "8", titulo: "Pérdida de la calidad", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "Renuncia, fallecimiento, ausencia injustificada +2 años, incumplimiento grave (2/3 Asamblea), condena por delitos contra propiedad comunal.", detalle: "La expulsión requiere 2/3 de la Asamblea. El expulsado puede reingresar después de 5 años si la Asamblea lo aprueba. La renuncia no exime de deudas.", tags: ["pérdida", "expulsión", "renuncia", "2/3"] },
   { num: "9", titulo: "Suspensión temporal", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "El cabildo puede suspender derechos por mora en cuotas +1 año o violación de normas. Máximo 6 meses.", detalle: "Durante la suspensión no puede votar ni acceder a beneficios, pero sigue obligado al pago de cuotas atrasadas. Al regularizar, recupera sus derechos.", tags: ["suspensión", "mora", "sanción", "6 meses"] },
-  { num: "10", titulo: "Cuota anual laica", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Todo comunero pleno paga una cuota anual ordinaria. Es laica: su recaudación y destino no están vinculados a celebraciones religiosas.", detalle: "💡 ARTÍCULO CLAVE. Resuelve el problema de cuotas mezcladas con fiestas religiosas. La cuota anual va a un fondo laico para administración, infraestructura y proyectos. Las contribuciones para la Santa Cruz son voluntarias (Art. 13).", tags: ["cuota", "anual", "laica", "religión"] },
+  { num: "10", titulo: "Cuota anual ordinaria", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "La comuna es laica. El único aporte económico obligatorio es la cuota anual ordinaria, que todos los comuneros plenos aportan por igual, destinada a la administración y el desarrollo de la comuna.", detalle: "La cuota anual va a un fondo común para gastos administrativos, mantenimiento de infraestructura y proyectos de desarrollo. Es el único aporte exigible; cualquier otra contribución es voluntaria (Art. 13).", tags: ["cuota", "anual", "laica", "aporte"] },
   { num: "11", titulo: "Destino de la cuota", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Gastos administrativos, mantenimiento de infraestructura, proyectos de desarrollo, fondo de emergencias.", detalle: "El cabildo presenta informe financiero anual detallado. Cada comunero puede solicitar ver comprobantes. El Sistema Digital publicará los estados financieros automáticamente.", tags: ["cuota", "destino", "fondos", "transparencia"] },
   { num: "12", titulo: "Cuotas extraordinarias", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Para proyectos específicos, con aprobación de la Asamblea, objetivo claro, monto definido y plazo.", detalle: "Ej: construcción de cancha, reparación de acequia, compra de equipamiento comunal, proyectos turísticos.", tags: ["extraordinaria", "proyectos", "asamblea"] },
-  { num: "13", titulo: "Contribuciones religiosas voluntarias", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Las fiestas religiosas son voluntarias. La contribución NO puede exigirse para trámites o derechos comunales.", detalle: "💡 ARTÍCULO CLAVE. Personas de otras religiones (evangélicos, testigos de Jehová, etc.) no están obligadas a contribuir a la fiesta de la Santa Cruz. La fiesta la organizan quienes voluntariamente participan. Esto garantiza libertad de culto.", tags: ["religión", "voluntario", "laico", "libertad de culto"] },
+  { num: "13", titulo: "Contribuciones voluntarias", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Las contribuciones para festividades y celebraciones son siempre voluntarias y no pueden exigirse como requisito para ningún trámite o derecho comunal.", detalle: "Cada festividad o celebración la organizan y financian quienes deciden participar libremente. Ningún comunero está obligado a aportar a ellas para conservar sus derechos, respetando la libertad de culto y de conciencia de cada persona.", tags: ["voluntario", "festividades", "libertad de culto", "laico"] },
   { num: "14", titulo: "Exenciones", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "La Asamblea puede exonerar: mayores de 65 años sin ingresos, discapacitados, pobreza extrema, jefas de hogar vulnerables.", detalle: "La solicitud se presenta al cabildo con justificativos. El cabildo recomienda y la Asamblea decide.", tags: ["exención", "vulnerable", "adulto mayor"] },
   { num: "15", titulo: "Mora", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Notificación. Si supera 1 año: suspensión. La mora no exonera del pago.", detalle: "El comunero puede ponerse al día en cualquier momento y recuperar sus derechos automáticamente.", tags: ["mora", "deuda", "suspensión"] },
   { num: "16", titulo: "Tierras comunales", seccion: "TÍTULO IV — DEL PATRIMONIO", texto: "Bienes colectivos, imprescriptibles e inembargables. No pueden venderse, hipotecarse ni fraccionarse individualmente.", detalle: "Ningún comunero puede vender 'su' parcela a terceros. Si alguien se muda, la tierra vuelve a la comuna para reasignarse. Esto protege el territorio comunal.", tags: ["tierras", "comunales", "colectivos", "protección"] },
@@ -149,11 +150,10 @@ function renderReglamento() {
     cont.innerHTML = '<div style="text-align:center;padding:2.5rem;color:#6c757d;">📭 No se encontraron artículos con esos criterios.</div>';
   } else {
     cont.innerHTML = filtrados.map(function (a) {
-      const destacado = a.detalle.indexOf("💡") === 0 ? " destacado" : "";
       const tags = a.tags.map(function (t) { return "<span>#" + t + "</span>"; }).join("");
       return '<article class="articulo fade-in">' +
                '<div class="art-cab">' +
-                 '<div class="num-badge' + destacado + '">' + a.num + '</div>' +
+                 '<div class="num-badge">' + a.num + '</div>' +
                  '<div class="art-titulo">' + resaltar(a.titulo, q) + '</div>' +
                  '<div class="art-seccion">' + a.seccion + '</div>' +
                '</div>' +
