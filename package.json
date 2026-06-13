@@ -1,0 +1,11 @@
+{
+  "name": "gobierno-comunal-web",
+  "version": "1.0.0",
+  "description": "Gobierno Comunal Atravezado L.B. - Sistema de Gestión Comunal",
+  "scripts": {
+    "start": "npx serve landing -l $PORT --no-clipboard"
+  },
+  "dependencies": {
+    "serve": "^14.2.0"
+  }
+}

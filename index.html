@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gobierno Comunal Atravezado L.B.</title>
+<style>
+  :root { --verde: #1b4332; --verde-medio: #2d6a4f; --verde-claro: #40916c; --verde-pasto: #52b788; --crema: #fefae0; --marron: #7f5539; --rojo: #9b2226; --fondo: #f0f4f0; --blanco: #ffffff; --texto: #1a1a2e; --texto-sec: #5a6a5a; --borde: #d8e2d8; --sombra: 0 2px 8px rgba(0,0,0,0.06); --sombra-hover: 0 4px 16px rgba(0,0,0,0.12); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--fondo); color: var(--texto); line-height: 1.6; }
+
+  /* ===== HEADER ===== */
+  header { background: linear-gradient(135deg, var(--verde), var(--verde-medio)); color: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+  .header-top { padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+  .header-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: white; }
+  .header-brand .shield { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+  .header-brand h1 { font-size: 1.15rem; font-weight: 700; line-height: 1.2; }
+  .header-brand h1 small { font-size: 0.65rem; font-weight: 400; opacity: 0.8; display: block; }
+  .header-actions { display: flex; align-items: center; gap: 0.75rem; }
+  .btn-acceso { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; }
+  .btn-acceso:hover { background: rgba(255,255,255,0.25); }
+
+  /* ===== NAV ===== */
+  nav { background: var(--verde-medio); padding: 0 2rem; display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  nav a { color: rgba(255,255,255,0.8); text-decoration: none; padding: 0.6rem 1rem; font-size: 0.78rem; font-weight: 500; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; flex-shrink: 0; }
+  nav a:hover { color: white; background: rgba(255,255,255,0.08); }
+  nav a.active { color: white; border-bottom-color: var(--verde-pasto); background: rgba(255,255,255,0.05); }
+
+  /* ===== SECTIONS COMMON ===== */
+  section { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+  section h2 { color: var(--verde); font-size: 1.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+  section h2:after { content: ''; flex: 1; height: 2px; background: linear-gradient(to right, var(--verde-claro), transparent); margin-left: 1rem; }
+  section .subtitle { color: var(--texto-sec); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+  /* ===== HERO ===== */
+  .hero { background: linear-gradient(135deg, var(--verde) 0%, var(--verde-medio) 50%, var(--verde-claro) 100%); color: white; padding: 3.5rem 1.5rem; text-align: center; }
+  .hero h2 { color: white; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; justify-content: center; }
+  .hero h2:after { display: none; }
+  .hero p { font-size: 1rem; opacity: 0.9; max-width: 650px; margin: 0 auto 0.75rem; }
+  .hero .info-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; font-size: 0.8rem; }
+  .hero .info-bar span { opacity: 0.85; display: flex; align-items: center; gap: 0.3rem; }
+
+  /* ===== CARDS/LISTS ===== */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+  @media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .card { background: var(--blanco); border-radius: 12px; padding: 1.5rem; box-shadow: var(--sombra); border: 1px solid var(--borde); transition: all 0.2s; }
+  .card:hover { box-shadow: var(--sombra-hover); }
+  .card .icon-lg { font-size: 2.2rem; margin-bottom: 0.5rem; }
+  .card h3 { color: var(--verde); font-size: 1rem; margin-bottom: 0.4rem; }
+  .card p { font-size: 0.85rem; color: var(--texto-sec); line-height: 1.5; }
+  .card .tag { display: inline-block; margin-top: 0.6rem; font-size: 0.68rem; padding: 0.15rem 0.6rem; border-radius: 4px; background: #e9ecef; color: #495057; }
+  .card .tag.activo { background: #d4edda; color: #155724; }
+  .card .tag.construyendo { background: #fff3cd; color: #856404; }
+  .card.clickable { cursor: pointer; }
+  .card.clickable:hover { border-color: var(--verde-claro); transform: translateY(-2px); }
+
+  /* ===== MODULO DETALLE ===== */
+  .modulo-detalle { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed var(--borde); display: none; font-size: 0.82rem; color: var(--texto-sec); }
+  .modulo-detalle.visible { display: block; }
+  .modulo-detalle ul { list-style: none; padding: 0; }
+  .modulo-detalle li { padding: 0.3rem 0; display: flex; align-items: start; gap: 0.5rem; }
+  .modulo-detalle li:before { content: '→'; color: var(--verde-claro); }
+
+  /* ===== REGLAMENTO PANEL ===== */
+  #panel-reglamento { background: var(--blanco); border-radius: 12px; box-shadow: var(--sombra); border: 1px solid var(--borde); overflow: hidden; margin-top: 1rem; }
+  .reg-header { background: linear-gradient(135deg, var(--verde), var(--verde-medio)); color: white; padding: 1.25rem 1.5rem; }
+  .reg-header h3 { color: white; font-size: 1.1rem; margin: 0; }
+  .reg-header p { opacity: 0.85; font-size: 0.8rem; margin-top: 0.3rem; }
+  .reg-toolbar { padding: 1rem 1.5rem; background: #f8faf8; border-bottom: 1px solid var(--borde); display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+  .reg-toolbar input { flex: 1; min-width: 180px; padding: 0.6rem 1rem; border: 2px solid var(--borde); border-radius: 8px; font-size: 0.85rem; transition: border-color 0.2s; }
+  .reg-toolbar input:focus { outline: none; border-color: var(--verde-claro); }
+  .reg-toolbar select { padding: 0.6rem 1rem; border: 2px solid var(--borde); border-radius: 8px; font-size: 0.85rem; background: white; cursor: pointer; }
+  .reg-stats { padding: 0.5rem 1.5rem; font-size: 0.78rem; color: var(--texto-sec); background: #f8faf8; border-bottom: 1px solid var(--borde); }
+
+  /* Artículos */
+  .articulo-wrap { border-bottom: 1px solid var(--borde); }
+  .articulo-wrap:last-child { border-bottom: none; }
+  .articulo-head { padding: 1rem 1.5rem; cursor: pointer; display: flex; align-items: start; gap: 0.75rem; transition: background 0.15s; }
+  .articulo-head:hover { background: #f5faf5; }
+  .articulo-head .num-badge { background: var(--verde-claro); color: white; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
+  .articulo-head .info { flex: 1; }
+  .articulo-head .info .art-titulo { font-weight: 600; font-size: 0.9rem; }
+  .articulo-head .info .art-seccion { font-size: 0.7rem; color: var(--texto-sec); }
+  .articulo-head .info .art-tags { margin-top: 0.2rem; display: flex; gap: 0.3rem; flex-wrap: wrap; }
+  .articulo-head .info .art-tags span { font-size: 0.6rem; padding: 0.05rem 0.35rem; border-radius: 3px; background: #e9ecef; color: #6c757d; }
+  .articulo-head .expand-icon { font-size: 0.8rem; color: var(--texto-sec); transition: transform 0.2s; margin-top: 0.3rem; }
+  .articulo-head.open .expand-icon { transform: rotate(90deg); }
+  .articulo-head.destacado .num-badge { background: var(--rojo); }
+
+  /* Cuerpo expandido del artículo */
+  .articulo-body { display: none; padding: 0 1.5rem 1rem 4.2rem; }
+  .articulo-body.visible { display: block; }
+  .articulo-body .texto { font-size: 0.88rem; color: var(--texto); line-height: 1.7; margin-bottom: 0.75rem; }
+  .articulo-body .texto .highlight { background: #fff3cd; padding: 0.05rem 0.2rem; border-radius: 2px; }
+  .articulo-body .detalle-extra { background: #f8faf8; border-radius: 8px; padding: 1rem; font-size: 0.82rem; border-left: 3px solid var(--verde-claro); margin-top: 0.5rem; }
+  .articulo-body .detalle-extra h4 { color: var(--verde); font-size: 0.85rem; margin-bottom: 0.4rem; }
+
+  /* ===== MAPA ===== */
+  .mapa-placeholder { background: #e9ecef; border-radius: 12px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--texto-sec); gap: 0.5rem; border: 2px dashed var(--borde); }
+  .mapa-placeholder .icon-map { font-size: 2.5rem; opacity: 0.5; }
+
+  /* ===== FOOTER ===== */
+  footer { background: var(--verde); color: rgba(255,255,255,0.8); text-align: center; padding: 2rem 1.5rem; font-size: 0.82rem; }
+  footer strong { color: white; }
+  footer .links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin: 0.75rem 0; }
+  footer .links a { color: var(--verde-pasto); text-decoration: none; }
+  footer .links a:hover { text-decoration: underline; }
+
+  /* ===== ANIMACIONES ===== */
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeIn 0.3s ease; }
+
+  /* ===== BADGES ===== */
+  .badge { display: inline-block; font-size: 0.65rem; padding: 0.15rem 0.5rem; border-radius: 10px; font-weight: 600; }
+  .badge-verde { background: #d4edda; color: #155724; }
+  .badge-ambar { background: #fff3cd; color: #856404; }
+  .badge-azul { background: #cce5ff; color: #004085; }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-top">
+    <a href="#" class="header-brand">
+      <div class="shield">🏛️</div>
+      <div>
+        <h1>Gobierno Comunal Atravezado L.B.<small>Libertador Bolívar · Manglaralto · Santa Elena · Ecuador</small></h1>
+      </div>
+    </a>
+    <div class="header-actions">
+      <a href="#panel-reglamento" class="btn-acceso">📜 Reglamento</a>
+      <a href="#" class="btn-acceso">🔐 Acceso Comunero</a>
+    </div>
+  </div>
+  <nav>
+    <a href="#inicio" class="active">🏠 Inicio</a>
+    <a href="#comuna">📍 La Comuna</a>
+    <a href="#sistema">⚡ El Sistema</a>
+    <a href="#modulos">📦 Módulos</a>
+    <a href="#panel-reglamento">📜 Reglamento</a>
+    <a href="#mapa">🗺️ Mapas</a>
+    <a href="#transparencia">📊 Transparencia</a>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="inicio">
+  <h2>🏛️ Gobierno Comunal Atravezado – Libertador Bolívar</h2>
+  <p>Un sistema digital para organizar, transparentar y fortalecer la gestión de nuestra comuna. Censo de comuneros, catastro de tierras, cuotas laicas, actas, disputas y más.</p>
+  <div class="info-bar">
+    <span>📅 Fundada 20 oct 1938</span>
+    <span>📜 Acuerdo Ministerial N°103</span>
+    <span>📍 Parroquia Manglaralto</span>
+    <span>👥 ~4,000 habitantes</span>
+    <span>⚡ Versión Demostrativa 1.0</span>
+  </div>
+</section>
+
+<!-- ===== LA COMUNA ===== -->
+<section id="comuna">
+  <h2>📍 La Comuna</h2>
+  <p class="subtitle">Conoce nuestra historia, territorio y gente.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="icon-lg">📖</div>
+      <h3>Historia</h3>
+      <p>Fundada el <strong>20 de octubre de 1938</strong> mediante Acuerdo Ministerial N°103 del 8 de noviembre de 1938. Su nombre "Atravezado" proviene del río que atraviesa la población de lado a lado. Libertador Bolívar es la parroquia a la que pertenece la comuna.</p>
+    </div>
+    <div class="card">
+      <div class="icon-lg">🌊</div>
+      <h3>Geografía y Turismo</h3>
+      <p>Ubicada en el Km 52 de la <strong>Ruta del Spondylus</strong>, entre Valdivia y Manglaralto. Contamos con playa, el cerro La Pólvora (parapente, alas delta, senderismo), artesanías tradicionales y una inspectoría comunitaria activa desde 2016.</p>
+    </div>
+    <div class="card">
+      <div class="icon-lg">👥</div>
+      <h3>Población</h3>
+      <p>Se estiman aproximadamente <strong>4,000 habitantes</strong>. Actualmente no existe un censo oficial actualizado. El Sistema de Gestión Comunal permitirá tener un registro preciso de todos los comuneros y residentes.</p>
+    </div>
+    <div class="card">
+      <div class="icon-lg">🏛️</div>
+      <h3>Cabildo</h3>
+      <p>La comuna es gobernada por un <strong>cabildo de 5 miembros</strong>: presidente, vicepresidente, tesorero, síndico y secretario. Se eligen cada año en diciembre, con sesiones ordinarias el primer domingo de cada mes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EL SISTEMA ===== -->
+<section id="sistema" style="background: var(--blanco); border-radius: 12px; box-shadow: var(--sombra); margin: 0 1.5rem 2rem; padding: 2rem 2.5rem;">
+  <h2>⚡ El Sistema de Gestión Comunal</h2>
+  <p class="subtitle">Una plataforma digital para administrar la comuna con transparencia, eficiencia y participación ciudadana.</p>
+
+  <div class="grid-2" style="margin-top:1rem;">
+    <div>
+      <h3 style="color:var(--verde);font-size:1rem;margin-bottom:0.75rem;">✅ ¿Qué resuelve?</h3>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:0.4rem 0;font-size:0.85rem;display:flex;gap:0.5rem;">✓ <strong>Censo desactualizado:</strong> Registro digital de cada comunero con estado (nativo, aspirante, pleno), datos personales y fotos.</li>
+        <li style="padding:0.4rem 0;font-size:0.85rem;display:flex;gap:0.5rem;">✓ <strong>Cuotas mezcladas con religión:</strong> Cuota anual laica obligatoria + donaciones voluntarias separadas para fiestas religiosas.</li>
+        <li style="padding:0.4rem 0;font-size:0.85rem;display:flex;gap:0.5rem;">✓ <strong>Desorden en tierras:</strong> Catastro digital con mapa, asignaciones, reglas de urbanismo y construcción.</li>
+        <li style="padding:0.4rem 0;font-size:0.85rem;display:flex;gap:0.5rem;">✓ <strong>Falta de transparencia:</strong> Cualquier comunero puede consultar el estado financiero, actas y decisiones del cabildo.</li>
+        <li style="padding:0.4rem 0;font-size:0.85rem;display:flex;gap:0.5rem;">✓ <strong>Sin comunicación:</strong> Portal de noticias, avisos, convocatorias y consultas rápidas a la comunidad.</li>
+        <li style="padding:0.4rem 0;font-size:0.85rem;display:flex;gap:0.5rem;">✓ <strong>Disputas sin proceso:</strong> Sistema de quejas, mediación del cabildo y resolución por asamblea.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:var(--verde);font-size:1rem;margin-bottom:0.75rem;">🔧 ¿Cómo funciona?</h3>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:0.4rem 0;font-size:0.85rem;display:flex;gap:0.5rem;">📱 <strong>Web + Móvil:</strong> Se accede desde cualquier celular, tablet o computadora.</li>
+        <li style="padding:0.4rem 0;font-size:0.85rem;display:flex;gap:0.5rem;">🔐 <strong>Roles:</strong> El cabildo administra. Los comuneros consultan y participan. El público ve información general.</li>
+        <li style="padding:0.4rem 0;font-size:0.85rem;display:flex;gap:0.5rem;">🌐 <strong>Online:</strong> Funciona 24/7, accesible desde cualquier lugar con internet.</li>
+        <li style="padding:0.4rem 0;font-size:0.85rem;display:flex;gap:0.5rem;">🗄️ <strong>Base de datos:</strong> Toda la información está organizada, respaldada y segura.</li>
+        <li style="padding:0.4rem 0;font-size:0.85rem;display:flex;gap:0.5rem;">💯 <strong>Transparente:</strong> Los comuneros pueden verificar cada movimiento y decisión.</li>
+        <li style="padding:0.4rem 0;font-size:0.85rem;display:flex;gap:0.5rem;">🆓 <strong>Sin costo:</strong> El desarrollo es gratuito para la comuna. Solo el hosting en la nube (~$20/mes compartido).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,var(--verde),var(--verde-medio));color:white;border-radius:12px;padding:1.5rem;margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;">
+    <div>
+      <strong style="font-size:1rem;">📋 ¿Quieres ver cómo funciona?</strong>
+      <p style="opacity:0.9;font-size:0.85rem;margin-top:0.3rem;">El reglamento interno ya está disponible abajo. Los demás módulos se construyen progresivamente.</p>
+    </div>
+    <a href="#panel-reglamento" style="background:white;color:var(--verde);padding:0.6rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.85rem;white-space:nowrap;">📜 Ver Reglamento →</a>
+  </div>
+</section>
+
+<!-- ===== MÓDULOS ===== -->
+<section id="modulos">
+  <h2>📦 Módulos del Sistema</h2>
+  <p class="subtitle">Cada módulo resuelve un aspecto clave de la gestión comunal. Todos están conectados entre sí.</p>
+
+  <div class="grid-3">
+    <div class="card clickable" onclick="toggleDetalle(this)">
+      <div class="icon-lg">👥</div>
+      <h3>Censo y Comuneros</h3>
+      <p>Registro oficial de todos los comuneros nativos, aspirantes y plenos. Aprobación por asamblea, historial de cuotas, estados (activo/suspendido/retirado).</p>
+      <span class="tag constuyendo">🔧 En construcción</span>
+      <div class="modulo-detalle">
+        <ul>
+          <li>Registro con cédula y datos personales</li>
+          <li>Verificación y aprobación por el cabildo</li>
+          <li>Clasificación: nativo / aspirante / pleno</li>
+          <li>Historial de pagos de cuotas</li>
+          <li>Reporte automático para el MAG</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card clickable" onclick="toggleDetalle(this)">
+      <div class="icon-lg">💰</div>
+      <h3>Cuotas y Finanzas</h3>
+      <p>Gestión de cuotas anuales laicas, cuotas extraordinarias y donaciones voluntarias para fiestas religiosas. Reportes transparentes.</p>
+      <span class="tag constuyendo">🔧 En construcción</span>
+      <div class="modulo-detalle">
+        <ul>
+          <li>Cuota anual obligatoria y laica (no religiosa)</li>
+          <li>Cuotas extraordinarias para proyectos</li>
+          <li>Donaciones voluntarias para fiestas religiosas</li>
+          <li>Estado de cuenta por comunero</li>
+          <li>Exenciones para adultos mayores y vulnerables</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card clickable" onclick="toggleDetalle(this)">
+      <div class="icon-lg">🌍</div>
+      <h3>Catastro de Tierras</h3>
+      <p>Mapa interactivo de la comuna con cada parcela, asignatario, uso y estado legal. Control de urbanismo y nuevas asignaciones.</p>
+      <span class="tag constuyendo">🔧 En construcción</span>
+      <div class="modulo-detalle">
+        <ul>
+          <li>Mapa interactivo con parcelas georreferenciadas</li>
+          <li>Asignaciones de tierra para vivienda</li>
+          <li>Reglas de construcción (retiros, pisos, materiales)</li>
+          <li>Control de fraccionamiento</li>
+          <li>Solicitudes de nuevas asignaciones</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card clickable" onclick="toggleDetalle(this)">
+      <div class="icon-lg">📋</div>
+      <h3>Trámites y Solicitudes</h3>
+      <p>Solicitudes de tierras, certificados de residencia, constancias de comunero, permisos de construcción y más.</p>
+      <span class="tag">Próximamente</span>
+      <div class="modulo-detalle">
+        <ul>
+          <li>Solicitudes de asignación de tierras</li>
+          <li>Certificados de comunero</li>
+          <li>Permisos de construcción</li>
+          <li>Constancias de residencia</li>
+          <li>Seguimiento del estado del trámite</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card clickable" onclick="toggleDetalle(this)">
+      <div class="icon-lg">📝</div>
+      <h3>Actas y Decisiones</h3>
+      <p>Todas las actas de sesiones del cabildo y asambleas generales, buscables y con respaldo digital. Decisiones con trazabilidad.</p>
+      <span class="tag">Próximamente</span>
+      <div class="modulo-detalle">
+        <ul>
+          <li>Actas de sesiones del cabildo</li>
+          <li>Actas de asambleas generales</li>
+          <li>Decisiones y acuerdos firmados</li>
+          <li>Historial de reformas al reglamento</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card clickable" onclick="toggleDetalle(this)">
+      <div class="icon-lg">⚖️</div>
+      <h3>Disputas y Mediación</h3>
+      <p>Reporte de conflictos entre comuneros, mediación del cabildo, arbitraje y resolución por asamblea general.</p>
+      <span class="tag">Próximamente</span>
+      <div class="modulo-detalle">
+        <ul>
+          <li>Reporte de quejas y conflictos</li>
+          <li>Mediación del cabildo (primera instancia)</li>
+          <li>Resolución escrita del cabildo</li>
+          <li>Apelación ante la Asamblea General</li>
+          <li>Historial de disputas resueltas</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card clickable" onclick="toggleDetalle(this)">
+      <div class="icon-lg">🛡️</div>
+      <h3>Seguridad Comunal</h3>
+      <p>Coordinación de la Inspectoría Comunitaria, rondas nocturnas, alertas de emergencia y mapa de incidencias.</p>
+      <span class="tag">Próximamente</span>
+      <div class="modulo-detalle">
+        <ul>
+          <li>Registro de rondas de inspectoría</li>
+          <li>Alertas de emergencia a comuneros</li>
+          <li>Reporte de incidencias</li>
+          <li>Mapa de puntos críticos de seguridad</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card clickable" onclick="toggleDetalle(this)">
+      <div class="icon-lg">📰</div>
+      <h3>Noticias y Avisos</h3>
+      <p>Comunicados oficiales del cabildo, convocatorias a asambleas, resultados de elecciones, eventos y anuncios importantes.</p>
+      <span class="tag">Próximamente</span>
+      <div class="modulo-detalle">
+        <ul>
+          <li>Comunicados del cabildo</li>
+          <li>Convocatorias a asamblea</li>
+          <li>Resultados de elecciones</li>
+          <li>Avisos de mingas y eventos</li>
+          <li>Consulta rápida a la comunidad</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REGLAMENTO PANEL ===== -->
+<section id="panel-reglamento">
+  <h2>📜 Reglamento Interno</h2>
+  <p class="subtitle">Basado en la Codificación de la Ley de Organización y Régimen de Comunas (R.O. 17 marzo 2004) y la Constitución del Ecuador. Borrador para discusión del cabildo y la asamblea.</p>
+
+  <div id="panel-reglamento">
+    <div class="reg-header">
+      <h3>📜 Reglamento Interno — Comuna Atravezado L.B.</h3>
+      <p>47 artículos · 10 títulos · Aprobado por Asamblea General del [fecha]</p>
+    </div>
+    <div class="reg-toolbar">
+      <input type="text" id="buscadorInput" placeholder="🔍 Buscar en el reglamento…" oninput="buscarReglamento()">
+      <select id="filtroTitulo" onchange="buscarReglamento()">
+        <option value="">📁 Todos los títulos</option>
+        <option value="TÍTULO I">Título I — Generales (Arts. 1-3)</option>
+        <option value="TÍTULO II">Título II — Comuneros (Arts. 4-9)</option>
+        <option value="TÍTULO III">Título III — Cuotas (Arts. 10-15)</option>
+        <option value="TÍTULO IV">Título IV — Tierras (Arts. 16-20)</option>
+        <option value="TÍTULO V">Título V — Cabildo y Asamblea (Arts. 21-29)</option>
+        <option value="TÍTULO VI">Título VI — Convivencia (Arts. 30-33)</option>
+        <option value="TÍTULO VII">Título VII — Disputas (Arts. 34-37)</option>
+        <option value="TÍTULO VIII">Título VIII — Elecciones (Arts. 38-40)</option>
+        <option value="TÍTULO IX">Título IX — Ambiente (Arts. 41-43)</option>
+        <option value="TÍTULO X">Título X — Finales (Arts. 44-47)</option>
+      </select>
+    </div>
+    <div class="reg-stats" id="resultadosInfo">Mostrando 47 de 47 artículos</div>
+    <div id="listaArticulos"></div>
+  </div>
+
+  <div style="margin-top:1rem;text-align:center;">
+    <a href="#" style="color:var(--verde-claro);font-size:0.85rem;text-decoration:none;">📥 Descargar reglamento completo (PDF)</a> · 
+    <a href="#" style="color:var(--verde-claro);font-size:0.85rem;text-decoration:none;">📄 Versión para imprimir</a>
+  </div>
+</section>
+
+<!-- ===== MAPA ===== -->
+<section id="mapa">
+  <h2>🗺️ Mapas y Catastro</h2>
+  <p class="subtitle">Próximamente: mapa interactivo de la comuna con todas las parcelas, zonas de protección, puntos de interés y rutas turísticas.</p>
+  <div class="grid-2">
+    <div class="mapa-placeholder">
+      <div class="icon-map">🗺️</div>
+      <strong>Mapa de la Comuna</strong>
+      <p style="font-size:0.8rem;">Límites territoriales, playa, cerro La Pólvora, vías principales</p>
+      <span class="badge badge-ambar">🔧 En construcción</span>
+    </div>
+    <div class="mapa-placeholder">
+      <div class="icon-map">📍</div>
+      <strong>Catastro de Tierras</strong>
+      <p style="font-size:0.8rem;">Parcelas, asignaciones, usos y estado legal</p>
+      <span class="badge badge-ambar">🔧 En construcción</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRANSPARENCIA ===== -->
+<section id="transparencia">
+  <h2>📊 Transparencia y Rendición de Cuentas</h2>
+  <p class="subtitle">La información de la comuna estará disponible para todos los comuneros. Cada peso, cada decisión, cada acta.</p>
+  <div class="grid-3">
+    <div class="card">
+      <div class="icon-lg">📈</div>
+      <h3>Estado Financiero</h3>
+      <p>Ingresos, gastos y saldos actualizados. Reportes por año, mes y proyecto.</p>
+      <span class="tag">Próximamente</span>
+    </div>
+    <div class="card">
+      <div class="icon-lg">📋</div>
+      <h3>Actas Públicas</h3>
+      <p>Todas las actas del cabildo y asambleas, accesibles para cualquier comunero.</p>
+      <span class="tag">Próximamente</span>
+    </div>
+    <div class="card">
+      <div class="icon-lg">📊</div>
+      <h3>Estadísticas</h3>
+      <p>Población, cuotas recaudadas, tierras asignadas, disputas resueltas.</p>
+      <span class="tag">Próximamente</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <strong>🏛️ Gobierno Comunal Atravezado – Libertador Bolívar</strong>
+  <div class="links">
+    <a href="#inicio">Inicio</a>
+    <a href="#comuna">La Comuna</a>
+    <a href="#sistema">El Sistema</a>
+    <a href="#modulos">Módulos</a>
+    <a href="#panel-reglamento">Reglamento</a>
+    <a href="#mapa">Mapas</a>
+  </div>
+  <p>Parroquia Manglaralto · Cantón Santa Elena · Provincia de Santa Elena · Ecuador<br>
+  Fundada el 20 de octubre de 1938 · Acuerdo Ministerial N°103<br><br>
+  ⚡ Sistema Digital de Gestión Comunal — Versión Demostrativa 1.0<br>
+  Desarrollado por Stevens · Comuna Atravezado L.B.</p>
+</footer>
+
+<script>
+// ===== DATOS DEL REGLAMENTO =====
+const reglamento = [
+  { num: "1", titulo: "Ámbito", seccion: "TÍTULO I — DISPOSICIONES GENERALES", texto: "Este reglamento rige para todos los habitantes de la Comuna Atravezado – Libertador Bolívar, y en especial para los comuneros inscritos en el Registro de Habitantes.", tags: ["general", "ámbito"], detalle: "Se aplica a todo el territorio de la comuna, incluyendo playas, cerros, zonas residenciales, comerciales y turísticas. Los visitantes y turistas están sujetos a las normas de convivencia y a la Inspectoría Comunitaria." },
+  { num: "2", titulo: "Fines", seccion: "TÍTULO I — DISPOSICIONES GENERALES", texto: "Son fines de este reglamento: a) Garantizar la convivencia armónica; b) Proteger el patrimonio colectivo; c) Establecer derechos y obligaciones; d) Regular el uso de tierras comunales; e) Asegurar transparencia; f) Resolver disputas; g) Promover el desarrollo sostenible.", tags: ["general", "fines"], detalle: "Cada fin se desarrolla en los títulos específicos de este reglamento. El desarrollo sostenible incluye turismo responsable, protección ambiental y actividades productivas tradicionales como la artesanía." },
+  { num: "3", titulo: "Interpretación", seccion: "TÍTULO I — DISPOSICIONES GENERALES", texto: "En caso de duda sobre la interpretación de este reglamento, resolverá la Asamblea General, y en su defecto, el cabildo, sujetándose a la Ley de Comunas, la Constitución y los tratados internacionales.", tags: ["general", "interpretación"], detalle: "Los tratados internacionales aplicables incluyen el Convenio 169 de la OIT sobre Pueblos Indígenas y Tribales, y la Declaración de la ONU sobre Derechos de los Pueblos Indígenas." },
+  { num: "4", titulo: "Definición de comunero", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "Es comunero o comunera toda persona natural que, habiendo sido aceptada por la Asamblea General e inscrita en el Registro de Habitantes de la Comuna, cumple con los deberes establecidos en este reglamento.", tags: ["comunero", "definición", "registro"], detalle: "El Registro de Habitantes es el libro oficial de la comuna donde constan todos los comuneros. El Sistema Digital de Gestión Comunal será la versión electrónica de este registro." },
+  { num: "5", titulo: "Clases de comuneros", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "Existen tres clases: a) Comunero Nativo: nacido en el territorio, hijo de padres comuneros. b) Comunero Aspirante: no nativo que solicita ingreso. c) Comunero Pleno: aspirante que completa el proceso y adquiere todos los derechos.", tags: ["comunero", "nativo", "aspirante", "pleno"], detalle: "El nativo tiene derecho preferente. Para ser aspirante se requiere: 5 años de residencia comprobable, solicitud escrita, aprobación de la asamblea, y pago de cuota de ingreso (Art. 7)." },
+  { num: "6", titulo: "Derechos de los comuneros", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "Son derechos: a) Voz y voto en Asambleas; b) Ser elegido al cabildo; c) Uso de bienes colectivos; d) Solicitar tierras; e) Recibir información; f) Presentar peticiones; g) Beneficios colectivos; h) Protección del cabildo.", tags: ["comunero", "derechos", "voto", "asamblea"], detalle: "El voto en asambleas es presencial. Para asuntos digitales se implementará un sistema de votación electrónica verificable. Los beneficios colectivos incluyen acceso preferente a proyectos de la comuna." },
+  { num: "7", titulo: "Requisitos para comunero aspirante", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "a) Residir mínimo 5 años continuos; b) Mayor de 18 años; c) Solicitud escrita; d) Sin antecedentes penales graves; e) Compromiso de cumplir el reglamento; f) Aprobación de la Asamblea; g) Pagar cuota de ingreso.", tags: ["aspirante", "requisitos", "5 años", "asamblea"], detalle: "La residencia se comprueba con declaración de dos comuneros plenos y verificación del cabildo. La cuota de ingreso la fija la Asamblea General." },
+  { num: "8", titulo: "Pérdida de la calidad de comunero", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "Se pierde por: a) Renuncia; b) Fallecimiento; c) Ausencia injustificada por +2 años; d) Incumplimiento grave (2/3 de la Asamblea); e) Condena por delitos contra propiedad comunal.", tags: ["pérdida", "expulsión", "renuncia"], detalle: "La expulsión requiere el voto de las dos terceras partes de la Asamblea General y solo procede por faltas muy graves (Art. 33)." },
+  { num: "9", titulo: "Suspensión temporal", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "El cabildo puede suspender derechos por: a) Mora en cuotas por +1 año; b) Violación de normas. Máximo 6 meses.", tags: ["suspensión", "mora", "sanción"], detalle: "Durante la suspensión, el comunero no puede votar, ser candidato ni acceder a beneficios colectivos, pero sigue obligado al pago de cuotas." },
+  { num: "10", titulo: "Cuota anual obligatoria", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Todo comunero pleno paga una cuota anual. Esta cuota es laica: su recaudación y destino no están vinculados a celebraciones religiosas.", tags: ["cuota", "anual", "laica", "religión"], detalle: "💡 Este artículo resuelve el problema de las cuotas mezcladas con fiestas religiosas. La cuota anual va a un fondo laico. Las donaciones para la Santa Cruz son voluntarias y van a una cuenta separada (Art. 13)." },
+  { num: "11", titulo: "Destino de la cuota anual", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Los fondos se destinan a: a) Gastos administrativos; b) Mantenimiento de infraestructura; c) Proyectos de desarrollo; d) Fondo de emergencias.", tags: ["cuota", "destino", "fondos"], detalle: "El cabildo debe presentar un informe financiero anual (Art. 25) detallando cada gasto. Los comuneros pueden solicitar ver los comprobantes." },
+  { num: "12", titulo: "Cuotas extraordinarias", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Para proyectos específicos, con aprobación de la Asamblea, objetivo claro, monto definido y plazo.", tags: ["extraordinaria", "proyectos", "asamblea"], detalle: "Ejemplos: construcción de una cancha, reparación de una acequia, compra de equipamiento para la casa comunal." },
+  { num: "13", titulo: "Contribuciones voluntarias religiosas", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Las fiestas religiosas (Santa Cruz, etc.) son voluntarias. La contribución NO puede exigirse como requisito para trámites o derechos comunales.", tags: ["religión", "voluntario", "santa cruz", "laico", "derechos"], detalle: "💡 Artículo clave. Las personas de otras religiones (evangélicos, testigos de Jehová, etc.) no están obligadas a contribuir a la fiesta de la Santa Cruz para mantener sus derechos como comuneros. La fiesta la organizan y financias quienes voluntariamente participan." },
+  { num: "14", titulo: "Exenciones", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "La Asamblea puede exonerar: mayores de 65 años sin ingresos, discapacitados, pobreza extrema, jefas de hogar vulnerables.", tags: ["exención", "vulnerable", "adulto mayor"], detalle: "La solicitud de exención se presenta al cabildo con los justificativos del caso. El cabildo recomienda y la Asamblea aprueba." },
+  { num: "15", titulo: "Mora", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Notificación por mora. Si supera 1 año: suspensión temporal. La mora no exonera del pago.", tags: ["mora", "deuda", "suspensión"], detalle: "El comunero moroso puede ponerse al día en cualquier momento y recuperar sus derechos." },
+  { num: "16", titulo: "Naturaleza de las tierras comunales", seccion: "TÍTULO IV — DEL PATRIMONIO Y BIENES COLECTIVOS", texto: "Las tierras son bienes colectivos, imprescriptibles e inembargables. No pueden venderse, hipotecarse ni fraccionarse individualmente.", tags: ["tierras", "comunales", "colectivos", "imprescriptible"], detalle: "Las tierras pertenecen a la comuna como persona jurídica. Ningún comunero puede vender "su" parcela a un tercero. Si alguien se va, la tierra vuelve a la comuna (Art. 17)." },
+  { num: "17", titulo: "Asignación de tierras para vivienda", seccion: "TÍTULO IV — DEL PATRIMONIO Y BIENES COLECTIVOS", texto: "El cabildo + Asamblea asignan lotes: contrato de uso indefinido, prohibición de venta, construir en 2 años, reversión si abandono +2 años.", tags: ["asignación", "vivienda", "lotes", "abandono"], detalle: "La asignación es un derecho de uso, NO una transferencia de propiedad. Si el asignatario fallece, sus herederos pueden solicitar la continuidad del usufructo, sujeto a aprobación de la Asamblea." },
+  { num: "18", titulo: "Prohibición de fraccionamiento", seccion: "TÍTULO IV — DEL PATRIMONIO Y BIENES COLECTIVOS", texto: "No se fraccionan bosques, páramos, humedales, manglares, acequias, playas ni zonas protegidas. Otros fraccionamientos requieren 2/3 de la Asamblea.", tags: ["fraccionamiento", "bosques", "protección", "ambiente"], detalle: "Esta prohibición está alineada con el Art. 17 literal f de la Ley de Comunas y con las leyes ambientales ecuatorianas." },
+  { num: "19", titulo: "Construcción y urbanismo", seccion: "TÍTULO IV — DEL PATRIMONIO Y BIENES COLECTIVOS", texto: "a) Retiros mínimos: 2m laterales, 3m frente; b) Máximo 2 pisos; c) Materiales no contaminantes; d) Pozo séptico; e) No obstruir vías ni acequias.", tags: ["construcción", "urbanismo", "retiros", "pisos", "ambiente"], detalle: "El Sistema Digital incluirá un asistente de construcción que guíe al comunero sobre los requisitos antes de empezar a construir. Las multas por construir sin permiso están en el Art. 32." },
+  { num: "20", titulo: "Registro de asignaciones (Catastro)", seccion: "TÍTULO IV — DEL PATRIMONIO Y BIENES COLECTIVOS", texto: "El cabildo lleva un Catastro de Tierras: ubicación, área, asignatario, fecha, uso, estado legal. Actualización anual.", tags: ["catastro", "tierras", "registro", "inventario"], detalle: "El Catastro Digital será accesible para todos los comuneros a través del Sistema, con un mapa interactivo que muestra cada parcela." },
+  { num: "21", titulo: "Composición del cabildo", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA GENERAL", texto: "5 miembros: presidente, vicepresidente, tesorero, síndico, secretario. Cargos honoríficos no remunerados.", tags: ["cabildo", "presidente", "tesorero", "síndico"], detalle: "El presidente representa legalmente a la comuna. El tesorero maneja los fondos. El síndico vela por la legalidad. El secretario lleva las actas y el registro." },
+  { num: "22", titulo: "Elección del cabildo", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA GENERAL", texto: "Segunda quincena de diciembre. Reglamento electoral propio aprobado por la Asamblea y remitido al MAG.", tags: ["elección", "diciembre", "MAG", "reglamento electoral"], detalle: "El reglamento electoral específico se aprueba cada año 30 días antes de la elección (Art. 39). El Sistema Digital puede gestionar todo el proceso electoral." },
+  { num: "23", titulo: "Atribuciones del cabildo", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA GENERAL", texto: "Ejecutar decisiones de la asamblea, administrar fondos, mantener registros, convocar asambleas, resolver disputas, rendir cuentas.", tags: ["cabildo", "atribuciones", "administración"], detalle: "Además de las atribuciones del Art. 17 de la Ley de Comunas, el cabildo debe mantener actualizado el Sistema Digital de Gestión." },
+  { num: "24", titulo: "Sesiones del cabildo", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA GENERAL", texto: "Sesión ordinaria: primer domingo de cada mes. Extraordinarias: por convocatoria del presidente o 2 vocales.", tags: ["sesiones", "domingo", "reunión"], detalle: "Las actas de cada sesión deben publicarse en el Sistema Digital dentro de los 7 días siguientes a la reunión." },
+  { num: "25", titulo: "Rendición de cuentas", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA GENERAL", texto: "El cabildo cesante presenta informe el 1 de enero: estado financiero, gestión de tierras, proyectos, registros.", tags: ["rendición", "cuentas", "transparencia", "enero"], detalle: "Este informe debe estar disponible en el Sistema Digital para que todos los comuneros puedan consultarlo." },
+  { num: "26", titulo: "Naturaleza de la Asamblea General", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA GENERAL", texto: "Máxima autoridad de la comuna. Integrada por todos los comuneros plenos mayores de edad.", tags: ["asamblea", "máxima autoridad", "comuneros"], detalle: "La Asamblea puede delegar funciones al cabildo, pero retiene la última palabra en asuntos fundamentales: reformas, expulsiones, fraccionamientos." },
+  { num: "27", titulo: "Convocatoria a Asamblea", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA GENERAL", texto: "8 días de anticipación. Aviso público en lugares visibles y medios digitales.", tags: ["asamblea", "convocatoria", "aviso"], detalle: "El Sistema Digital enviará notificaciones automáticas a los comuneros registrados cuando haya una convocatoria." },
+  { num: "28", titulo: "Decisiones de la Asamblea", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA GENERAL", texto: "Mayoría simple para ordinarios. 2/3 para: reformas, fraccionamiento, expulsión, enajenación, cuotas extraordinarias.", tags: ["votación", "mayoría", "2/3", "decisiones"], detalle: "Las decisiones se registran en el acta de la asamblea y se publican en el Sistema Digital. Los resultados de cada votación son públicos." },
+  { num: "29", titulo: "Quórum", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA GENERAL", texto: "Mínimo 1/3 de comuneros plenos. En segunda convocatoria: con los que asistan.", tags: ["quórum", "asistencia"], detalle: "La segunda convocatoria se realiza 30 minutos después de la primera. Esta medida evita que una minoría bloquee las decisiones de la comuna." },
+  { num: "30", titulo: "Deberes de los comuneros", seccion: "TÍTULO VI — DE LA CONVIVENCIA Y DISCIPLINA", texto: "Cumplir el reglamento, pagar cuotas, participar en mingas, respetar a los demás, proteger el ambiente, mantener limpio.", tags: ["deberes", "mingas", "convivencia", "respeto"], detalle: "La participación en mingas es obligatoria. El Sistema Digital registrará la asistencia y las mingas realizadas." },
+  { num: "31", titulo: "Faltas leves", seccion: "TÍTULO VI — DE LA CONVIVENCIA Y DISCIPLINA", texto: "No ir a mingas sin justificación, basura en espacio público, ruido después de las 22:00, no limpiar el frente. Sanción: amonestación.", tags: ["faltas", "leves", "amonestación", "ruido"], detalle: "La Inspectoría Comunitaria (Art. 43) puede reportar estas faltas al cabildo para su procesamiento." },
+  { num: "32", titulo: "Faltas graves", seccion: "TÍTULO VI — DE LA CONVIVENCIA Y DISCIPLINA", texto: "Usurpación de tierras, construir sin permiso, daño a bienes comunales, agresión, impago de cuotas, contaminación. Sanción: multa hasta 3 cuotas + suspensión hasta 6 meses.", tags: ["faltas", "graves", "multa", "suspensión", "usurpación"], detalle: "El monto de la multa lo determina el cabildo según la gravedad y la reincidencia. Además de la multa, el infractor debe reparar el daño causado." },
+  { num: "33", titulo: "Faltas muy graves", seccion: "TÍTULO VI — DE LA CONVIVENCIA Y DISCIPLINA", texto: "Venta de tierra comunal a terceros, malversación de fondos, destrucción de áreas protegidas, reincidencia grave. Sanción: expulsión (2/3 de la Asamblea).", tags: ["faltas", "muy graves", "expulsión", "malversación"], detalle: "La expulsión es la sanción máxima. El expulsado pierde todos los derechos como comunero, pero puede solicitar reingreso después de 5 años si la Asamblea lo aprueba." },
+  { num: "34", titulo: "Mediación del cabildo", seccion: "TÍTULO VII — DE LA RESOLUCIÓN DE DISPUTAS", texto: "Toda disputa se somete primero a mediación del cabildo, que escucha a las partes y busca acuerdo voluntario.", tags: ["disputas", "mediación", "cabildo", "conflictos"], detalle: "La mediación es confidencial y gratuita. Si hay acuerdo, se firma un acta que tiene valor vinculante para las partes." },
+  { num: "35", titulo: "Arbitraje comunal", seccion: "TÍTULO VII — DE LA RESOLUCIÓN DE DISPUTAS", texto: "Si no hay acuerdo, el cabildo emite resolución escrita dentro de 15 días. Apelable ante la Asamblea General.", tags: ["arbitraje", "resolución", "apelación"], detalle: "La resolución del cabildo debe ser motivada (explicar por qué decide lo que decide). Las partes pueden presentar pruebas y testigos." },
+  { num: "36", titulo: "Asamblea como última instancia", seccion: "TÍTULO VII — DE LA RESOLUCIÓN DE DISPUTAS", texto: "La Asamblea resuelve apelaciones en última instancia interna. Decisión definitiva e inapelable.", tags: ["última instancia", "definitiva"], detalle: "Las decisiones de la Asamblea son vinculantes para todos los comuneros. Se registran en acta y se publican." },
+  { num: "37", titulo: "Reserva de vía judicial", seccion: "TÍTULO VII — DE LA RESOLUCIÓN DE DISPUTAS", texto: "Las decisiones internas no impiden acudir a la vía judicial ordinaria.", tags: ["judicial", "vía legal", "derechos"], detalle: "El comunero que no esté conforme con la decisión de la Asamblea puede acudir a la justicia ordinaria. La comuna respeta ese derecho." },
+  { num: "38", titulo: "Principios electorales", seccion: "TÍTULO VIII — DEL RÉGIMEN ELECTORAL", texto: "Voto universal y secreto, equidad de género, transparencia, alternabilidad.", tags: ["elecciones", "voto", "secreto", "género"], detalle: "La equidad de género busca que al menos 2 de los 5 miembros del cabildo sean mujeres. La alternabilidad prohíbe la reelección indefinida." },
+  { num: "39", titulo: "Reglamento electoral", seccion: "TÍTULO VIII — DEL RÉGIMEN ELECTORAL", texto: "El cabildo saliente propone reglamento electoral 30 días antes. Incluye fecha, requisitos, procedimiento de votación y escrutinio.", tags: ["reglamento electoral", "procedimiento"], detalle: "El Sistema Digital puede gestionar: padrón electoral, inscripción de candidatos, votación secreta y escrutinio automático." },
+  { num: "40", titulo: "Requisitos para candidato", seccion: "TÍTULO VIII — DEL RÉGIMEN ELECTORAL", texto: "Comunero pleno con 3 años de antigüedad, cuotas al día, sin sanción grave en 3 años, saber leer y escribir.", tags: ["candidato", "requisitos", "cuotas"], detalle: "Estos requisitos garantizan que los candidatos tengan suficiente conocimiento de la comuna y estén en pleno goce de sus derechos." },
+  { num: "41", titulo: "Protección ambiental", seccion: "TÍTULO IX — DEL MEDIO AMBIENTE Y EL TURISMO", texto: "Prohibido: tala de árboles nativos sin permiso, caza de animales silvestres, vertido de desechos sin tratar, extracción de arena sin permiso.", tags: ["ambiente", "protección", "árboles", "playa", "contaminación"], detalle: "La comuna está en la Ruta del Spondylus, zona de alta sensibilidad ecológica. La protección de playas y cerros es prioritaria para el turismo sostenible." },
+  { num: "42", titulo: "Turismo sostenible", seccion: "TÍTULO IX — DEL MEDIO AMBIENTE Y EL TURISMO", texto: "Los comuneros que presten servicios turísticos deben registrarse en el cabildo y cumplir normas de calidad y seguridad.", tags: ["turismo", "registro", "calidad"], detalle: "Incluye: hospedaje, alimentación, guianza turística, parapente, artesanías. El registro permitirá crear un directorio oficial de servicios turísticos de la comuna." },
+  { num: "43", titulo: "Inspectoría comunitaria", seccion: "TÍTULO IX — DEL MEDIO AMBIENTE Y EL TURISMO", texto: "Funciona bajo coordinación del cabildo: patrullaje nocturno desde las 23:00, protección de menores, atención de emergencias.", tags: ["seguridad", "inspectoría", "patrullaje", "menores"], detalle: "Creada en 2016. Los inspectores son comuneros voluntarios. El Sistema Digital permitirá registrar las rondas y reportar incidencias en tiempo real." },
+  { num: "44", titulo: "Reformas", seccion: "TÍTULO X — DISPOSICIONES FINALES", texto: "Se reforma por decisión de la Asamblea con voto de 2/3 de los asistentes.", tags: ["reformas", "modificación", "2/3"], detalle: "Las reformas se registran en un anexo al reglamento con la fecha y el acta de la asamblea que las aprobó." },
+  { num: "45", titulo: "Vigencia", seccion: "TÍTULO X — DISPOSICIONES FINALES", texto: "Desde su aprobación por la Asamblea General y registro en libro de actas. Copia remitida al MAG.", tags: ["vigencia", "aprobación", "MAG"], detalle: "El MAG (Ministerio de Agricultura y Ganadería) es la entidad rectora de las comunas según el Art. 4 de la Ley de Comunas." },
+  { num: "46", titulo: "Derogación", seccion: "TÍTULO X — DISPOSICIONES FINALES", texto: "Quedan derogadas las disposiciones internas anteriores que se opongan a este reglamento.", tags: ["derogación", "anterior"], detalle: "Este reglamento unifica y reemplaza cualquier norma interna previa que sea inconsistente." },
+  { num: "47", titulo: "Casos no previstos", seccion: "TÍTULO X — DISPOSICIONES FINALES", texto: "Resueltos por la Asamblea General, o por el cabildo en su defecto, sujetándose a la Ley de Comunas y leyes aplicables.", tags: ["casos no previstos", "asamblea", "supletorio"], detalle: "En caso de vacío legal, se aplican supletoriamente: Ley de Comunas, COOTAD, Constitución, Convenio 169 OIT." }
+];
+
+// ===== FUNCIONES =====
+function toggleArticulo(el) {
+  const body = el.nextElementSibling;
+  const isOpen = body.classList.contains('visible');
+  body.classList.toggle('visible');
+  el.classList.toggle('open');
+}
+
+function resaltar(texto, query) {
+  if (!query) return texto;
+  const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+  return texto.replace(regex, '<span class="highlight">$1</span>');
+}
+
+function buscarReglamento() {
+  const q = document.getElementById('buscadorInput').value.trim().toLowerCase();
+  const tituloFiltro = document.getElementById('filtroTitulo').value;
+
+  let filtrados = reglamento.filter(a => {
+    if (tituloFiltro && !a.seccion.startsWith(tituloFiltro)) return false;
+    if (q) {
+      return a.texto.toLowerCase().includes(q) ||
+             a.titulo.toLowerCase().includes(q) ||
+             a.tags.some(t => t.includes(q)) ||
+             a.num === q ||
+             (a.detalle && a.detalle.toLowerCase().includes(q));
+    }
+    return true;
+  });
+
+  const cont = document.getElementById('listaArticulos');
+  if (filtrados.length === 0) {
+    cont.innerHTML = '<div style="text-align:center;padding:2rem;color:#6c757d;">📭 No se encontraron artículos con esos criterios.</div>';
+  } else {
+    cont.innerHTML = filtrados.map(a => `
+      <div class="articulo-wrap fade-in">
+        <div class="articulo-head" onclick="toggleArticulo(this)">
+          <div class="num-badge">${a.num}</div>
+          <div class="info">
+            <div class="art-titulo">${resaltar(a.titulo, q)}</div>
+            <div class="art-seccion">${a.seccion}</div>
+            <div class="art-tags">${a.tags.map(t => `<span>#${t}</span>`).join('')}</div>
+          </div>
+          <div class="expand-icon">▶</div>
+        </div>
+        <div class="articulo-body">
+          <div class="texto">${resaltar(a.texto, q)}</div>
+          ${a.detalle ? `
+          <div class="detalle-extra">
+            <h4>📖 Detalle y aplicación</h4>
+            <p>${resaltar(a.detalle, q)}</p>
+          </div>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  document.getElementById('resultadosInfo').textContent = `Mostrando ${filtrados.length} de ${reglamento.length} artículos`;
+}
+
+function toggleDetalle(card) {
+  const detalle = card.querySelector('.modulo-detalle');
+  detalle.classList.toggle('visible');
+}
+
+// Render inicial
+buscarReglamento();
+</script>
+</body>
+</html>

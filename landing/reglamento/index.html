@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reglamento — Gobierno Comunal Atravezado L.B.</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%9B%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="page-wrapper">
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z"/></svg>
+      Gobierno Comunal Atravezado L.B.
+    </a>
+    <nav class="nav-main">
+      <a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Inicio</span></a>
+      <a href="/comuna"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>La Comuna</span></a>
+      <a href="/sistema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg><span>El Sistema</span></a>
+      <a href="/modulos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Módulos</span></a>
+      <a href="/reglamento" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Reglamento</span></a>
+      <a href="/mapas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg><span>Mapas</span></a>
+      <a href="/transparencia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span>Transparencia</span></a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-content">
+  <h1>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
+    Reglamento Interno
+  </h1>
+  <p class="subtitle">47 artículos · 10 títulos · Basado en la Codificación de la Ley de Organización y Régimen de Comunas (R.O. 17 marzo 2004) y la Constitución del Ecuador. Borrador para discusión del cabildo y la asamblea.</p>
+
+  <div id="panel-reglamento">
+    <div class="reg-header">
+      <h3>📜 Reglamento Interno — Comuna Atravezado L.B.</h3>
+      <p>Borrador v1.0 — Pendiente de aprobación por Asamblea General</p>
+    </div>
+    <div class="reg-toolbar">
+      <input type="text" id="buscadorInput" placeholder="🔍 Buscar en el reglamento…">
+      <select id="filtroTitulo">
+        <option value="">📁 Todos los títulos</option>
+        <option value="TÍTULO I">Título I — Generales (Arts. 1-3)</option>
+        <option value="TÍTULO II">Título II — Comuneros (Arts. 4-9)</option>
+        <option value="TÍTULO III">Título III — Cuotas (Arts. 10-15)</option>
+        <option value="TÍTULO IV">Título IV — Tierras (Arts. 16-20)</option>
+        <option value="TÍTULO V">Título V — Cabildo y Asamblea (Arts. 21-29)</option>
+        <option value="TÍTULO VI">Título VI — Convivencia (Arts. 30-33)</option>
+        <option value="TÍTULO VII">Título VII — Disputas (Arts. 34-37)</option>
+        <option value="TÍTULO VIII">Título VIII — Elecciones (Arts. 38-40)</option>
+        <option value="TÍTULO IX">Título IX — Ambiente (Arts. 41-43)</option>
+        <option value="TÍTULO X">Título X — Finales (Arts. 44-47)</option>
+      </select>
+    </div>
+    <div class="reg-stats" id="resultadosInfo">Mostrando 47 de 47 artículos</div>
+    <div id="listaArticulos"></div>
+  </div>
+</div>
+
+<footer>
+  <strong>🏛️ Gobierno Comunal Atravezado – Libertador Bolívar</strong><br>
+  Parroquia Manglaralto · Cantón Santa Elena · Ecuador
+</footer>
+</div>
+
+<script>
+// ===== Datos del reglamento (texto completo, JS limpio) =====
+const reglamento = [
+  { num: "1", titulo: "Ámbito", seccion: "TÍTULO I — DISPOSICIONES GENERALES", texto: "Este reglamento rige para todos los habitantes de la Comuna Atravezado – Libertador Bolívar, y en especial para los comuneros inscritos en el Registro de Habitantes.", detalle: "Se aplica a todo el territorio de la comuna, incluyendo playas, cerros, zonas residenciales, comerciales y turísticas. Los visitantes y turistas también están sujetos a las normas de convivencia. Cualquier persona que resida temporal o permanentemente debe respetar estas disposiciones.", tags: ["general", "ámbito", "registro"] },
+  { num: "2", titulo: "Fines", seccion: "TÍTULO I — DISPOSICIONES GENERALES", texto: "Son fines de este reglamento: a) Garantizar la convivencia armónica; b) Proteger el patrimonio colectivo; c) Establecer derechos y obligaciones claras; d) Regular el uso de tierras comunales; e) Asegurar transparencia; f) Proveer mecanismos de resolución de disputas; g) Promover el desarrollo sostenible.", detalle: "Cada fin se desarrolla en los títulos específicos. El desarrollo sostenible incluye turismo responsable, protección del cerro La Pólvora y la playa, artesanías tradicionales y actividades productivas de los comuneros.", tags: ["general", "fines", "convivencia"] },
+  { num: "3", titulo: "Interpretación", seccion: "TÍTULO I — DISPOSICIONES GENERALES", texto: "En caso de duda sobre la interpretación de este reglamento, resolverá la Asamblea General. En su defecto, el cabildo se sujetará a la Ley de Organización y Régimen de Comunas, la Constitución y los tratados internacionales.", detalle: "Tratados aplicables: Convenio 169 OIT sobre Pueblos Indígenas y Declaración de la ONU sobre Derechos de los Pueblos Indígenas. El derecho consuetudinario (usos y costumbres) también es fuente de interpretación.", tags: ["general", "interpretación", "ley"] },
+  { num: "4", titulo: "Definición de comunero", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "Es comunero toda persona aceptada por la Asamblea General e inscrita en el Registro de Habitantes, que cumple los deberes del reglamento.", detalle: "El Registro de Habitantes es el libro oficial exigido por el Art. 9 de la Ley de Comunas. Debe contener: nombres, cédula, fecha de ingreso, clase y estado. El Sistema Digital será la versión oficial de este registro.", tags: ["comunero", "definición", "registro"] },
+  { num: "5", titulo: "Clases de comuneros", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "Tres clases: Nativo (nacido en la comuna, hijo de comuneros), Aspirante (no nativo que solicita ingreso) y Pleno (aspirante que completa el proceso).", detalle: "El nativo tiene derecho preferente a ser inscrito al cumplir la mayoría de edad. El aspirante requiere los requisitos del Art. 7. El comunero pleno tiene todos los derechos del Art. 6.", tags: ["nativo", "aspirante", "pleno", "clases"] },
+  { num: "6", titulo: "Derechos de los comuneros", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "Voz y voto en Asambleas, ser elegido al cabildo, uso de bienes colectivos, solicitar tierras, recibir información, presentar peticiones y quejas, beneficios colectivos, protección del cabildo.", detalle: "El voto es presencial y secreto. Con el Sistema Digital se podrá votar electrónicamente de forma verificable. El derecho a la información incluye acceso a actas, finanzas y decisiones.", tags: ["derechos", "voto", "asamblea", "información"] },
+  { num: "7", titulo: "Requisitos para aspirante", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "a) 5 años de residencia continua; b) Mayor de 18 años; c) Solicitud escrita; d) Sin antecedentes penales graves; e) Compromiso escrito; f) Aprobación de la Asamblea; g) Cuota de ingreso.", detalle: "La residencia se comprueba con declaración de dos comuneros plenos y verificación del cabildo. La cuota de ingreso es independiente de la cuota anual.", tags: ["aspirante", "requisitos", "5 años", "asamblea"] },
+  { num: "8", titulo: "Pérdida de la calidad", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "Renuncia, fallecimiento, ausencia injustificada +2 años, incumplimiento grave (2/3 Asamblea), condena por delitos contra propiedad comunal.", detalle: "La expulsión requiere 2/3 de la Asamblea. El expulsado puede reingresar después de 5 años si la Asamblea lo aprueba. La renuncia no exime de deudas.", tags: ["pérdida", "expulsión", "renuncia", "2/3"] },
+  { num: "9", titulo: "Suspensión temporal", seccion: "TÍTULO II — DE LOS COMUNEROS", texto: "El cabildo puede suspender derechos por mora en cuotas +1 año o violación de normas. Máximo 6 meses.", detalle: "Durante la suspensión no puede votar ni acceder a beneficios, pero sigue obligado al pago de cuotas atrasadas. Al regularizar, recupera sus derechos.", tags: ["suspensión", "mora", "sanción", "6 meses"] },
+  { num: "10", titulo: "Cuota anual laica", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Todo comunero pleno paga una cuota anual ordinaria. Es laica: su recaudación y destino no están vinculados a celebraciones religiosas.", detalle: "💡 ARTÍCULO CLAVE. Resuelve el problema de cuotas mezcladas con fiestas religiosas. La cuota anual va a un fondo laico para administración, infraestructura y proyectos. Las contribuciones para la Santa Cruz son voluntarias (Art. 13).", tags: ["cuota", "anual", "laica", "religión"] },
+  { num: "11", titulo: "Destino de la cuota", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Gastos administrativos, mantenimiento de infraestructura, proyectos de desarrollo, fondo de emergencias.", detalle: "El cabildo presenta informe financiero anual detallado. Cada comunero puede solicitar ver comprobantes. El Sistema Digital publicará los estados financieros automáticamente.", tags: ["cuota", "destino", "fondos", "transparencia"] },
+  { num: "12", titulo: "Cuotas extraordinarias", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Para proyectos específicos, con aprobación de la Asamblea, objetivo claro, monto definido y plazo.", detalle: "Ej: construcción de cancha, reparación de acequia, compra de equipamiento comunal, proyectos turísticos.", tags: ["extraordinaria", "proyectos", "asamblea"] },
+  { num: "13", titulo: "Contribuciones religiosas voluntarias", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Las fiestas religiosas son voluntarias. La contribución NO puede exigirse para trámites o derechos comunales.", detalle: "💡 ARTÍCULO CLAVE. Personas de otras religiones (evangélicos, testigos de Jehová, etc.) no están obligadas a contribuir a la fiesta de la Santa Cruz. La fiesta la organizan quienes voluntariamente participan. Esto garantiza libertad de culto.", tags: ["religión", "voluntario", "laico", "libertad de culto"] },
+  { num: "14", titulo: "Exenciones", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "La Asamblea puede exonerar: mayores de 65 años sin ingresos, discapacitados, pobreza extrema, jefas de hogar vulnerables.", detalle: "La solicitud se presenta al cabildo con justificativos. El cabildo recomienda y la Asamblea decide.", tags: ["exención", "vulnerable", "adulto mayor"] },
+  { num: "15", titulo: "Mora", seccion: "TÍTULO III — DEL RÉGIMEN ECONÓMICO", texto: "Notificación. Si supera 1 año: suspensión. La mora no exonera del pago.", detalle: "El comunero puede ponerse al día en cualquier momento y recuperar sus derechos automáticamente.", tags: ["mora", "deuda", "suspensión"] },
+  { num: "16", titulo: "Tierras comunales", seccion: "TÍTULO IV — DEL PATRIMONIO", texto: "Bienes colectivos, imprescriptibles e inembargables. No pueden venderse, hipotecarse ni fraccionarse individualmente.", detalle: "Ningún comunero puede vender 'su' parcela a terceros. Si alguien se muda, la tierra vuelve a la comuna para reasignarse. Esto protege el territorio comunal.", tags: ["tierras", "comunales", "colectivos", "protección"] },
+  { num: "17", titulo: "Asignación de tierras", seccion: "TÍTULO IV — DEL PATRIMONIO", texto: "Cabildo + Asamblea asignan lotes: contrato de uso, prohibición de venta, construir en 2 años, reversión si abandono +2 años.", detalle: "Es un derecho de USO, no transferencia de propiedad. Los herederos pueden solicitar continuidad del usufructo, sujeto a aprobación de la Asamblea.", tags: ["asignación", "vivienda", "lotes", "reversión"] },
+  { num: "18", titulo: "Fraccionamiento", seccion: "TÍTULO IV — DEL PATRIMONIO", texto: "No se fraccionan bosques, humedales, manglares, playas ni zonas protegidas. Otros requieren 2/3 de la Asamblea.", detalle: "Alineado con la Ley de Comunas (Art. 17f) y leyes ambientales. La comuna está en la Ruta del Spondylus, zona de alta sensibilidad ecológica.", tags: ["fraccionamiento", "bosques", "playa", "ambiente"] },
+  { num: "19", titulo: "Construcción y urbanismo", seccion: "TÍTULO IV — DEL PATRIMONIO", texto: "Retiros: 2m laterales, 3m frente. Máx 2 pisos. Materiales no contaminantes. Pozo séptico. No obstruir vías ni acequias.", detalle: "Ninguna construcción sin permiso escrito del cabildo. Construir sin permiso es falta grave (Art. 32). El Sistema incluirá un asistente de construcción.", tags: ["construcción", "urbanismo", "retiros", "permisos"] },
+  { num: "20", titulo: "Catastro", seccion: "TÍTULO IV — DEL PATRIMONIO", texto: "El cabildo lleva un catastro: ubicación, área, asignatario, fecha, uso, estado legal. Actualización anual.", detalle: "El Catastro Digital será el mapa interactivo accesible para todos los comuneros. Cada parcela tendrá ficha con su historia completa.", tags: ["catastro", "tierras", "registro", "mapa"] },
+  { num: "21", titulo: "Composición del cabildo", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA", texto: "5 miembros: presidente, vicepresidente, tesorero, síndico, secretario. Cargos honoríficos no remunerados.", detalle: "El presidente representa legalmente. El tesorero maneja fondos. El síndico vela por la legalidad. El secretario custodia actas y registros.", tags: ["cabildo", "presidente", "tesorero", "síndico", "secretario"] },
+  { num: "22", titulo: "Elección", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA", texto: "Segunda quincena de diciembre. Reglamento electoral propio aprobado por la Asamblea.", detalle: "El reglamento electoral se aprueba 30 días antes (Art. 39). El Sistema puede gestionar padrón, candidatos y escrutinio.", tags: ["elección", "diciembre", "anual"] },
+  { num: "23", titulo: "Atribuciones", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA", texto: "Art. 17 Ley de Comunas + ejecutar decisiones, administrar fondos, mantener registros, convocar asambleas, resolver disputas, rendir cuentas.", detalle: "El cabildo debe mantener actualizado el Sistema Digital de Gestión. El Art. 17 incluye dictar normas de uso de bienes, arrendar y fijar cuotas.", tags: ["cabildo", "atribuciones", "administración"] },
+  { num: "24", titulo: "Sesiones", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA", texto: "Ordinaria: primer domingo de cada mes. Extraordinarias: por el presidente o 2 vocales.", detalle: "Las sesiones son públicas. Las actas deben publicarse en el Sistema Digital dentro de los 7 días.", tags: ["sesiones", "domingo", "mensual"] },
+  { num: "25", titulo: "Rendición de cuentas", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA", texto: "Informe escrito el 1 de enero: estado financiero, gestión de tierras, proyectos, registros.", detalle: "Disponible en el Sistema Digital. Cualquier comunero puede solicitar aclaraciones al cabildo saliente.", tags: ["rendición", "cuentas", "transparencia", "enero"] },
+  { num: "26", titulo: "Asamblea General", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA", texto: "Máxima autoridad. Integrada por todos los comuneros plenos mayores de edad.", detalle: "Retiene la última palabra en: reformas, expulsiones, fraccionamiento, cuotas extraordinarias.", tags: ["asamblea", "máxima autoridad"] },
+  { num: "27", titulo: "Convocatoria", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA", texto: "Con 8 días de anticipación. Aviso público en lugares visibles y medios digitales.", detalle: "El Sistema Digital enviará notificaciones automáticas a los comuneros registrados.", tags: ["asamblea", "convocatoria", "8 días"] },
+  { num: "28", titulo: "Decisiones", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA", texto: "Mayoría simple para ordinarios. 2/3 para: reformas, fraccionamiento, expulsión, cuotas extraordinarias.", detalle: "Las decisiones se registran en acta con los asistentes y resultados de cada votación.", tags: ["votación", "mayoría", "2/3"] },
+  { num: "29", titulo: "Quórum", seccion: "TÍTULO V — DEL CABILDO Y LA ASAMBLEA", texto: "Mínimo 1/3 de comuneros. Segunda convocatoria: con los que asistan.", detalle: "La segunda convocatoria es 30 minutos después. Evita que una minoría bloquee decisiones.", tags: ["quórum", "asistencia"] },
+  { num: "30", titulo: "Deberes", seccion: "TÍTULO VI — DE LA CONVIVENCIA", texto: "Cumplir el reglamento, pagar cuotas, participar en mingas, respetar, proteger el ambiente, mantener limpio.", detalle: "Las mingas son obligatorias. El cabildo registra asistencia. Se convocan con 3 días de anticipación.", tags: ["deberes", "mingas", "convivencia"] },
+  { num: "31", titulo: "Faltas leves", seccion: "TÍTULO VI — DE LA CONVIVENCIA", texto: "No ir a mingas, basura, ruido después de las 22:00, no limpiar frente. Sanción: amonestación.", detalle: "La Inspectoría reporta al cabildo. La reincidencia puede ser falta grave.", tags: ["faltas", "leves", "amonestación", "ruido"] },
+  { num: "32", titulo: "Faltas graves", seccion: "TÍTULO VI — DE LA CONVIVENCIA", texto: "Usurpación de tierras, construir sin permiso, daños, agresión, impago, contaminación. Multa hasta 3 cuotas + suspensión hasta 6 meses.", detalle: "El infractor debe reparar el daño. El monto de la multa lo determina el cabildo.", tags: ["faltas", "graves", "multa", "suspensión"] },
+  { num: "33", titulo: "Faltas muy graves", seccion: "TÍTULO VI — DE LA CONVIVENCIA", texto: "Venta de tierra a terceros, malversación, destrucción de áreas protegidas. Sanción: expulsión (2/3 Asamblea).", detalle: "El expulsado puede reingresar después de 5 años. La malversación se denuncia a la autoridad competente.", tags: ["faltas", "muy graves", "expulsión", "malversación"] },
+  { num: "34", titulo: "Mediación", seccion: "TÍTULO VII — DE LA RESOLUCIÓN DE DISPUTAS", texto: "Toda disputa se somete a mediación del cabildo, que busca acuerdo voluntario.", detalle: "Mediación confidencial, gratuita, sin abogados. El acuerdo se firma en acta y es vinculante. Máximo 30 días.", tags: ["disputas", "mediación", "cabildo"] },
+  { num: "35", titulo: "Arbitraje", seccion: "TÍTULO VII — DE LA RESOLUCIÓN DE DISPUTAS", texto: "Sin acuerdo, el cabildo emite resolución escrita en 15 días. Apelable ante la Asamblea.", detalle: "La resolución debe ser motivada (explicar por qué). Las partes presentan pruebas y testigos.", tags: ["arbitraje", "resolución", "apelación"] },
+  { num: "36", titulo: "Última instancia", seccion: "TÍTULO VII — DE LA RESOLUCIÓN DE DISPUTAS", texto: "La Asamblea resuelve apelaciones. Decisión definitiva e inapelable en el ámbito interno.", detalle: "La Asamblea escucha a las partes y al cabildo y decide por mayoría simple.", tags: ["última instancia", "definitiva"] },
+  { num: "37", titulo: "Vía judicial", seccion: "TÍTULO VII — DE LA RESOLUCIÓN DE DISPUTAS", texto: "Las decisiones internas no impiden acudir a la vía judicial ordinaria.", detalle: "La comuna respeta ese derecho del comunero y no toma represalias.", tags: ["judicial", "vía legal"] },
+  { num: "38", titulo: "Principios electorales", seccion: "TÍTULO VIII — DEL RÉGIMEN ELECTORAL", texto: "Voto universal y secreto, equidad de género (mín. 2 mujeres en el cabildo), transparencia, alternabilidad.", detalle: "La alternabilidad limita la reelección a 2 períodos consecutivos. Se fomenta participación de jóvenes y mujeres.", tags: ["elecciones", "voto", "secreto", "género", "alternabilidad"] },
+  { num: "39", titulo: "Reglamento electoral", seccion: "TÍTULO VIII — DEL RÉGIMEN ELECTORAL", texto: "El cabildo saliente propone reglamento 30 días antes. Incluye fecha, requisitos, votación, escrutinio, impugnaciones.", detalle: "El Sistema Digital puede gestionar padrón, candidatos, votación electrónica y resultados.", tags: ["reglamento electoral", "procedimiento"] },
+  { num: "40", titulo: "Requisitos para candidato", seccion: "TÍTULO VIII — DEL RÉGIMEN ELECTORAL", texto: "3 años de antigüedad, cuotas al día, sin sanción grave en 3 años, saber leer y escribir.", detalle: "Garantiza candidatos con conocimiento de la comuna y en pleno goce de derechos.", tags: ["candidato", "requisitos", "antigüedad"] },
+  { num: "41", titulo: "Protección ambiental", seccion: "TÍTULO IX — DEL MEDIO AMBIENTE Y EL TURISMO", texto: "Prohibido: tala sin permiso, caza, vertido de desechos sin tratar, extracción de arena.", detalle: "Zona de alta sensibilidad ecológica en la Ruta del Spondylus. Protegemos playas, cerro La Pólvora y cauces de agua.", tags: ["ambiente", "protección", "playa", "contaminación"] },
+  { num: "42", titulo: "Turismo sostenible", seccion: "TÍTULO IX — DEL MEDIO AMBIENTE Y EL TURISMO", texto: "Servicios turísticos deben registrarse en el cabildo y cumplir normas de calidad y seguridad.", detalle: "Incluye: hospedaje, alimentación, guianza, parapente, artesanías. El cabildo promoverá capacitación.", tags: ["turismo", "registro", "calidad"] },
+  { num: "43", titulo: "Inspectoría comunitaria", seccion: "TÍTULO IX — DEL MEDIO AMBIENTE Y EL TURISMO", texto: "Creada en 2016. Patrullaje nocturno desde las 23:00, protección de menores, emergencias, verificación del reglamento.", detalle: "Los inspectores son comuneros voluntarios. El Sistema Digital registrará rondas e incidencias en tiempo real.", tags: ["seguridad", "inspectoría", "patrullaje", "menores"] },
+  { num: "44", titulo: "Reformas", seccion: "TÍTULO X — DISPOSICIONES FINALES", texto: "Por decisión de la Asamblea con 2/3 de los asistentes.", detalle: "Las reformas se registran con fecha y número de acta. Entran en vigencia desde su aprobación.", tags: ["reformas", "modificación", "2/3"] },
+  { num: "45", titulo: "Vigencia", seccion: "TÍTULO X — DISPOSICIONES FINALES", texto: "Desde su aprobación por la Asamblea y registro en libro de actas. Copia al MAG.", detalle: "El MAG es la entidad rectora de las comunas según el Art. 4 de la Ley de Comunas.", tags: ["vigencia", "aprobación", "MAG"] },
+  { num: "46", titulo: "Derogación", seccion: "TÍTULO X — DISPOSICIONES FINALES", texto: "Quedan derogadas las disposiciones internas anteriores que se opongan.", detalle: "Este reglamento unifica y reemplaza normas previas inconsistentes.", tags: ["derogación", "anterior"] },
+  { num: "47", titulo: "Casos no previstos", seccion: "TÍTULO X — DISPOSICIONES FINALES", texto: "Resueltos por la Asamblea o el cabildo, sujetándose a la Ley de Comunas y leyes aplicables.", detalle: "Supletoriamente: Ley de Comunas, COOTAD, Constitución, Convenio 169 OIT, Declaración ONU Pueblos Indígenas.", tags: ["casos no previstos", "supletorio", "ley"] }
+];
+
+// ===== Resaltado de coincidencias =====
+function resaltar(texto, query) {
+  if (!query) return texto;
+  const escapado = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const regex = new RegExp("(" + escapado + ")", "gi");
+  return texto.replace(regex, '<span class="highlight">$1</span>');
+}
+
+// ===== Render — todos los artículos visibles, sin colapsar =====
+function renderReglamento() {
+  const q = document.getElementById("buscadorInput").value.trim().toLowerCase();
+  const filtroTitulo = document.getElementById("filtroTitulo").value;
+
+  const filtrados = reglamento.filter(function (a) {
+    if (filtroTitulo && !a.seccion.startsWith(filtroTitulo)) return false;
+    if (q) {
+      return a.texto.toLowerCase().includes(q) ||
+             a.titulo.toLowerCase().includes(q) ||
+             a.detalle.toLowerCase().includes(q) ||
+             a.tags.some(function (t) { return t.includes(q); }) ||
+             a.num === q;
+    }
+    return true;
+  });
+
+  const cont = document.getElementById("listaArticulos");
+
+  if (filtrados.length === 0) {
+    cont.innerHTML = '<div style="text-align:center;padding:2.5rem;color:#6c757d;">📭 No se encontraron artículos con esos criterios.</div>';
+  } else {
+    cont.innerHTML = filtrados.map(function (a) {
+      const destacado = a.detalle.indexOf("💡") === 0 ? " destacado" : "";
+      const tags = a.tags.map(function (t) { return "<span>#" + t + "</span>"; }).join("");
+      return '<article class="articulo fade-in">' +
+               '<div class="art-cab">' +
+                 '<div class="num-badge' + destacado + '">' + a.num + '</div>' +
+                 '<div class="art-titulo">' + resaltar(a.titulo, q) + '</div>' +
+                 '<div class="art-seccion">' + a.seccion + '</div>' +
+               '</div>' +
+               '<div class="art-texto">' + resaltar(a.texto, q) + '</div>' +
+               '<div class="art-detalle">' +
+                 '<h4>📖 Detalle y aplicación</h4>' +
+                 '<p>' + resaltar(a.detalle, q) + '</p>' +
+               '</div>' +
+               '<div class="art-tags">' + tags + '</div>' +
+             '</article>';
+    }).join("");
+  }
+
+  document.getElementById("resultadosInfo").textContent =
+    "Mostrando " + filtrados.length + " de " + reglamento.length + " artículos";
+}
+
+document.getElementById("buscadorInput").addEventListener("input", renderReglamento);
+document.getElementById("filtroTitulo").addEventListener("change", renderReglamento);
+renderReglamento();
+</script>
+</body>
+</html>
