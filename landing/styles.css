@@ -51,11 +51,11 @@ header{background:linear-gradient(135deg,var(--verde),var(--verde-medio));color:
 .titulo-deco::after{content:'';position:absolute;left:0;bottom:0;width:90px;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--terracota),var(--turquesa))}
 
 /* ===== HERO (inicio) ===== */
-.hero{position:relative;color:#fff;padding:5rem 1.5rem 5.5rem;text-align:center;overflow:hidden;
-  background:linear-gradient(160deg,rgba(27,67,50,.82),rgba(27,154,170,.55)),url('/img/hero-playa.jpg') center/cover no-repeat;}
-.hero h1{justify-content:center;color:#fff;font-size:2.6rem;margin-bottom:.7rem;text-shadow:0 2px 18px rgba(0,0,0,.4);letter-spacing:-.5px}
+.hero{position:relative;color:#fff;padding:4rem 1.5rem 4.5rem;text-align:center;overflow:hidden;
+  background:linear-gradient(180deg,rgba(20,45,35,.45) 0%,rgba(20,45,35,.18) 38%,rgba(20,45,35,.5) 100%),url('/img/hero-playa.jpg') center 38%/cover no-repeat;}
+.hero h1{justify-content:center;color:#fff;font-size:2.6rem;margin-bottom:.7rem;text-shadow:0 2px 12px rgba(0,0,0,.75);letter-spacing:-.5px}
 .hero h1 svg{width:40px;height:40px;color:var(--turquesa-claro)}
-.hero p{font-size:1.12rem;opacity:.96;max-width:700px;margin:0 auto;text-shadow:0 1px 10px rgba(0,0,0,.4)}
+.hero p{font-size:1.12rem;opacity:.98;max-width:700px;margin:0 auto;text-shadow:0 1px 8px rgba(0,0,0,.8)}
 .info-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:1.75rem;font-size:.85rem}
 .info-bar span{display:inline-flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.16);padding:.35rem .9rem;border-radius:999px;backdrop-filter:blur(3px)}
 @media(max-width:600px){.hero h1{font-size:1.9rem}.hero{padding:3.5rem 1.2rem 4rem}}
