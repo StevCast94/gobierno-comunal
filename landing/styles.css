@@ -39,7 +39,7 @@ header{background:linear-gradient(135deg,var(--verde),var(--verde-medio));color:
   /* El header se oculta al bajar para no estorbar la navegación */
   header.header-hidden{transform:translateY(-100%)}
   /* Hero móvil: texto sobre la imagen con capa oscura uniforme para contraste */
-  .hero{background:linear-gradient(rgba(8,28,22,.62),rgba(8,28,22,.62)),url('/img/hero-playa.jpg') center/cover no-repeat;
+  .hero{background:linear-gradient(rgba(6,24,18,.78),rgba(6,24,18,.78)),url('/img/hero-playa.jpg') center/cover no-repeat;
     min-height:clamp(340px,80vw,470px);justify-content:center;text-align:center;padding:2.5rem 1.2rem}
   .hero h1{font-size:1.75rem;text-shadow:0 2px 8px rgba(0,0,0,.6)}
   .hero h1 svg{width:30px;height:30px}
